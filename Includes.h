@@ -3,6 +3,21 @@
 #include <queue>
 #include "MatrixElement.h"
 
+std::vector<MatrixElement> generateNeighbours(MatrixElement& currentElement, size_t rows, size_t cols)
+{
+	std::vector<MatrixElement> neighbours;
+	if (currentElement.col > 0)
+		neighbours.push_back(MatrixElement(currentElement.row, currentElement.col - 1));
+	if (currentElement.col < cols - 1)
+		neighbours.push_back(MatrixElement(currentElement.row, currentElement.col + 1));
+	if (currentElement.row > 0)
+		neighbours.push_back(MatrixElement(currentElement.row - 1, currentElement.col));
+	if (currentElement.row < rows - 1)
+		neighbours.push_back(MatrixElement(currentElement.row + 1, currentElement.col));
+
+	return neighbours;
+}
+
 void lookAround(const MatrixElement& startingElement,
 				const std::vector<std::vector<bool>>& matrix,
 				std::vector<std::vector<bool>>& isVisited)
@@ -17,36 +32,15 @@ void lookAround(const MatrixElement& startingElement,
 	{
 		MatrixElement& currentElement = elementsQueue.front();
 
-		// look left
-		if (currentElement.col > 0 && 
-			matrix[currentElement.row][currentElement.col - 1] && 
-			!isVisited[currentElement.row][currentElement.col - 1])
-		{
-			elementsQueue.push(MatrixElement(currentElement.row, currentElement.col - 1));
-		}
-		
-		// look right
-		if (currentElement.col < cntCols - 1 &&
-			matrix[currentElement.row][currentElement.col + 1] &&
-			!isVisited[currentElement.row][currentElement.col + 1])
-		{
-			elementsQueue.push(MatrixElement(currentElement.row, currentElement.col + 1));
-		}
+		std::vector<MatrixElement> neighbours = generateNeighbours(currentElement, cntRows, cntCols);
 
-		// look up
-		if (currentElement.row > 0 &&
-			matrix[currentElement.row - 1][currentElement.col] &&
-			!isVisited[currentElement.row - 1][currentElement.col])
+		for (MatrixElement& neighbour : neighbours)
 		{
-			elementsQueue.push(MatrixElement(currentElement.row - 1, currentElement.col));
-		}
-
-		// look down
-		if (currentElement.row < cntRows - 1 &&
-			matrix[currentElement.row + 1][currentElement.col] &&
-			!isVisited[currentElement.row + 1][currentElement.col])
-		{
-			elementsQueue.push(MatrixElement(currentElement.row + 1, currentElement.col));
+			if (matrix[neighbour.row][neighbour.col] &&
+				!isVisited[neighbour.row][neighbour.col])
+			{
+				elementsQueue.push(neighbour);
+			}
 		}
 
 		isVisited[currentElement.row][currentElement.col] = true;
