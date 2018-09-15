@@ -9,9 +9,25 @@ namespace {
 
 	};
 
-	TEST(Test, TestTest) 
+	TEST(CountFiguresTest, BasicTest) 
 	{
-		EXPECT_EQ(countFigures(), 0);
+		std::vector<std::vector<bool>> testMatrix = 
+			{ 
+				{ true,	 false, false, false, false },
+				{ true,  false, true,  true,  false },
+				{ false, true,  false, true,  false },
+				{ false, true,  true,  true,  false },
+				{ false, false, false, false, true }
+			};
+
+		EXPECT_EQ(countFigures(testMatrix), 3);
+	}
+
+	TEST(CountFiguresTest, Empty)
+	{
+		std::vector<std::vector<bool>> testMatrix;
+
+		EXPECT_EQ(countFigures(testMatrix), 0);
 	}
 
 }
