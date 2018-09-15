@@ -5,10 +5,6 @@
 
 namespace {
 
-	class CalculatorTest : public ::testing::Test {
-
-	};
-
 	TEST(CountFiguresTest, BasicTest) 
 	{
 		std::vector<std::vector<bool>> testMatrix = 
