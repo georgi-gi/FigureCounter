@@ -26,6 +26,30 @@ namespace {
 		EXPECT_EQ(countFigures(testMatrix), 0);
 	}
 
+	TEST(CountFiguresTest, NoFigures)
+	{
+		std::vector<std::vector<bool>> testMatrix =
+		{
+			{ false, false, false, false, false },
+			{ false, false, false, false, false },
+			{ false, false, false, false, false },
+			{ false, false, false, false, false },
+			{ false, false, false, false, false }
+		};
+
+		EXPECT_EQ(countFigures(testMatrix), 0);
+	}
+
+	TEST(CountFiguresTest, AllMarked)
+	{
+		std::vector<std::vector<bool>> testMatrix =
+		{
+			{ true, true},
+			{ true, true}
+		};
+
+		EXPECT_EQ(countFigures(testMatrix), 1);
+	}
 }
 
 int main(int argc, char **argv) {

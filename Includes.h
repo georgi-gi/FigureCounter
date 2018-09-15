@@ -42,7 +42,7 @@ void lookAround(const MatrixElement& startingElement,
 		}
 
 		// look down
-		if (currentElement.col < cntRows - 1 &&
+		if (currentElement.row < cntRows - 1 &&
 			matrix[currentElement.row + 1][currentElement.col] &&
 			!isVisited[currentElement.row + 1][currentElement.col])
 		{
