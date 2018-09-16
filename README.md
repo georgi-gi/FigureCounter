@@ -10,4 +10,9 @@ For example, the following matrix
 0 1 1 1 0  
 0 0 0 0 1  
   
-has three figures inside.
+has three figures inside.  
+
+The Windows executable file is located inside Debug directory - FiguresCounter.exe.  
+You can run it on your PC and test the application with user input.
+
+Inside FigureCounterTests you can see a Visual Studio solution for unit tests with Google Test.
