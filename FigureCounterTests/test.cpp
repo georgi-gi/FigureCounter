@@ -1,6 +1,6 @@
 #include "pch.h"
 
-#include "../Includes.h"
+#include "../CountFigures.h"
 #include "gtest/gtest.h"
 
 namespace {
@@ -22,6 +22,18 @@ namespace {
 	TEST(CountFiguresTest, Empty)
 	{
 		std::vector<std::vector<bool>> testMatrix;
+
+		EXPECT_EQ(countFigures(testMatrix), 0);
+	}
+
+	TEST(CountFiguresTest, EmptyRows)
+	{
+		std::vector<std::vector<bool>> testMatrix = 
+		{
+			{},
+			{},
+			{}
+		};
 
 		EXPECT_EQ(countFigures(testMatrix), 0);
 	}
