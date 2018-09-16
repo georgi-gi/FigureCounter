@@ -15,4 +15,5 @@ has three figures inside.
 The Windows executable file is located inside Debug directory - FiguresCounter.exe.  
 You can run it on your PC and test the application with user input.
 
-Inside FigureCounterTests you can see a Visual Studio solution for unit tests with Google Test.
+Inside FigureCounterTests you can see a Visual Studio solution for unit tests with Google Test.  
+There, inside Debug, is located the FigureCounterTests.exe, which will run all unit tests for the application.
